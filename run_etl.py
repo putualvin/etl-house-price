@@ -1,6 +1,6 @@
 from web_scrapper import Scraper
 import pandas as pd
-
+import os
 
 web_scrap = Scraper()
 

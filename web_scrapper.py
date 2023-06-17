@@ -5,6 +5,8 @@ import itertools
 import re
 import psycopg2
 from sqlalchemy import create_engine
+import os
+import json
 
 def connection_config(connection_db):
     path = os.getcwd()
@@ -34,8 +36,8 @@ class Scraper():
 
     def main(self):
         df = self.extract()
-        df = self.transform(df)
-        self.load(df, conn, cur, engine, 'public')
+        cleaned_df  = self.transform(df)
+        self.load(cleaned_df,'public')
 
     def extract(self):
         # Define header
