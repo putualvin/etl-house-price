@@ -1,14 +1,9 @@
-from extract import Scraper
+from web_scrapper import Scraper
+import pandas as pd
 
-host = 'localhost'
-port = 5432
-database = 'data_engineer_project'
-user = 'postgres'
-password = input("Enter password: ")
-web_scrap = Scraper(host=host,
-                    port = port,
-                    database= database,
-                    user = user,
-                    password = password)
 
-web_scrap.main()
+web_scrap = Scraper()
+
+df = pd.read_csv('House Price/Scrap Output.csv')
+web_scrap.transform(df)
+web_scrap.load(df, 'public')
